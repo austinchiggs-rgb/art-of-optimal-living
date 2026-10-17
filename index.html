@@ -4,9 +4,37 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>The Art of Optimal Living</title>
+<meta name="description" content="Learn how to live a longer and more optimal life.">
+<meta name="theme-color" content="#F6FBFE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#08192B" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://artofoptimalliving.com/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Art of Optimal Living">
+<meta property="og:title" content="The Art of Optimal Living">
+<meta property="og:description" content="Learn how to live a longer and more optimal life.">
+<meta property="og:url" content="https://artofoptimalliving.com/">
+<meta property="og:image" content="https://artofoptimalliving.com/images/social-card.webp">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Art of Optimal Living">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Art of Optimal Living">
+<meta name="twitter:description" content="Learn how to live a longer and more optimal life.">
+<meta name="twitter:image" content="https://artofoptimalliving.com/images/social-card.webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "The Art of Optimal Living",
+  "url": "https://artofoptimalliving.com/",
+  "description": "Learn how to live a longer and more optimal life."
+}
+</script>
 <style>
 :root{
   --bg:#F6FBFE; --surface:#FFFFFF; --ink:#0B2A4A; --muted:#4F6A83; --line:#DCEBF4;
@@ -29,6 +57,9 @@ html{scroll-behavior:smooth;scroll-padding-top:env(safe-area-inset-top,0px)}
 body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 Inter,system-ui,sans-serif}
 h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:500;line-height:1.12;margin:0}
 a{color:inherit;text-decoration:none}
+.skip-link{position:fixed;left:16px;top:16px;z-index:100;background:var(--btn-bg);color:var(--btn-ink);padding:10px 16px;border-radius:8px;transform:translateY(-200%)}
+.skip-link:focus{transform:translateY(0)}
+:focus-visible{outline:3px solid var(--sky-deep);outline-offset:3px}
 .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
 .eyebrow{font-size:13px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--sky-deep)}
 .btn{display:inline-block;background:var(--btn-bg);color:var(--btn-ink);padding:14px 26px;border-radius:999px;font-weight:600;font-size:15px;transition:transform .2s}
@@ -41,7 +72,15 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .links{display:flex;gap:28px;font-size:15px;font-weight:500;color:var(--muted);align-items:center}
 .links a:hover{color:var(--ink)}
 .links .btn{padding:10px 20px;color:var(--btn-ink)}
-@media(max-width:820px){.links a:not(.btn){display:none}}
+.menu-toggle{display:none;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink);padding:9px 15px;font:600 14px Inter,system-ui,sans-serif;cursor:pointer}
+@media(max-width:820px){
+  nav .wrap{position:relative}
+  .menu-toggle{display:inline-flex;align-items:center;gap:8px}
+  .links{display:none;position:absolute;left:24px;right:24px;top:60px;flex-direction:column;align-items:stretch;gap:4px;padding:12px;background:var(--surface);border:1px solid var(--line);border-radius:18px;box-shadow:0 18px 40px -22px rgba(11,42,74,.45)}
+  .links.open{display:flex}
+  .links a{padding:10px 12px;border-radius:10px}
+  .links a:hover{background:var(--bg)}
+}
 .hero{position:relative;overflow:hidden;padding:96px 0 110px;background:linear-gradient(180deg,#CFEBF8 0%,var(--bg) 100%)}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .hero{background:linear-gradient(180deg,#123556 0%,var(--bg) 100%)}}
 :root[data-theme="dark"] .hero{background:linear-gradient(180deg,#123556 0%,var(--bg) 100%)}
@@ -51,20 +90,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .hero h1 em{font-style:italic;color:var(--sky-deep)}
 .hero p{max-width:520px;color:var(--muted);font-size:20px;margin:0 0 34px}
 .cta{display:flex;gap:14px;flex-wrap:wrap}
-.stats b{display:block;font:600 30px Fraunces,serif}
-.stats span{font-size:14px;color:var(--muted)}
 section{padding:88px 0}
-.head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:40px;flex-wrap:wrap}
-.head h2{font-size:clamp(32px,4.4vw,48px);margin-top:10px}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-@media(max-width:900px){.grid{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.grid{grid-template-columns:1fr}}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:30px;transition:transform .25s,box-shadow .25s;display:flex;flex-direction:column;gap:12px}
-.card:hover{transform:translateY(-4px);box-shadow:0 18px 40px -22px rgba(11,42,74,.35)}
-.card h3{font-size:24px}
-.card p{margin:0;color:var(--muted);font-size:15.5px}
-.card .more{margin-top:auto;padding-top:8px;font-weight:600;font-size:14px;color:var(--sky-deep)}
-.ico{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;font-size:22px;background:color-mix(in srgb,var(--sky) 22%,transparent)}
 .band{background:var(--navy);color:var(--on-navy);border-radius:32px;padding:64px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center;position:relative;overflow:hidden}
 .band::after{content:"";position:absolute;right:-80px;bottom:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(110,193,228,.45),transparent 70%)}
 .band h2{font-size:clamp(30px,4vw,44px);margin:12px 0 16px}
@@ -74,52 +100,37 @@ section{padding:88px 0}
 .band ul{list-style:none;margin:0;padding:0;position:relative;z-index:1;display:grid;gap:14px}
 .band li{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);padding:16px 20px;border-radius:16px;font-weight:500}
 @media(max-width:800px){.band{grid-template-columns:1fr;padding:36px 26px}}
-.posts{display:grid;gap:0;border-top:1px solid var(--line)}
-.post{display:flex;justify-content:space-between;gap:24px;align-items:baseline;padding:26px 4px;border-bottom:1px solid var(--line);transition:padding .25s}
-.post:hover{padding-left:14px}
-.post h3{font-size:clamp(20px,2.6vw,27px)}
-.post time{color:var(--muted);font-size:14px;white-space:nowrap}
-.news{text-align:center;background:var(--surface);border:1px solid var(--line);border-radius:32px;padding:72px 24px}
-.news h2{font-size:clamp(30px,4vw,44px);max-width:20ch;margin:12px auto 16px}
-.news p{max-width:520px;margin:0 auto 30px;color:var(--muted)}
-.news form{display:flex;gap:10px;max-width:460px;margin:0 auto;flex-wrap:wrap;justify-content:center}
-.news input{flex:1;min-width:220px;padding:14px 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:15px}
-.news input:focus{outline:2px solid var(--sky);border-color:transparent}
-.news small{display:block;margin-top:16px;color:var(--muted);font-size:13px}
-#ok{display:none;margin-top:16px;color:var(--sky-deep);font-weight:600}
 footer{padding:56px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
 footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
-footer nav{all:unset}
 .fl{display:flex;gap:22px;flex-wrap:wrap}
 .fl a:hover{color:var(--ink)}
 .two{display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center}
 @media(max-width:820px){.two{grid-template-columns:1fr}}
 .two h2{font-size:clamp(30px,4.2vw,46px);margin:12px 0 16px}
 .two p{color:var(--muted);margin:0 0 26px}
-.tags{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px}
-.tags a{border:1px solid var(--line);background:var(--surface);padding:8px 16px;border-radius:999px;font-size:14px;font-weight:500}
-.tags a:hover{border-color:var(--sky)}
 .panel{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:44px}
-.cover{width:min(280px,100%);aspect-ratio:3/4;margin:0 auto;border-radius:10px 18px 18px 10px;background:linear-gradient(160deg,#0B2A4A,#1F8FC0);color:#fff;padding:30px 26px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:-10px 18px 40px -16px rgba(11,42,74,.55),inset 6px 0 0 rgba(255,255,255,.12);position:relative;overflow:hidden}
-.cover::after{content:"";position:absolute;right:-60px;top:-60px;width:180px;height:180px;border-radius:50%;background:radial-gradient(circle,#F4D9A8,transparent 70%);opacity:.8}
-.cover small{letter-spacing:.14em;text-transform:uppercase;font-size:11px;opacity:.85;position:relative;z-index:1}
-.cover b{font:500 28px/1.15 Fraunces,serif;position:relative;z-index:1}
 .guide-img{display:block;width:min(300px,100%);height:auto;margin:0 auto;border-radius:12px;box-shadow:0 18px 40px -16px rgba(11,42,74,.45)}
 .lead form{display:flex;gap:10px;flex-wrap:wrap}
 .lead input{flex:1;min-width:220px;padding:14px 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:15px}
 .lead input:focus{outline:2px solid var(--sky);border-color:transparent}
 .lead small{display:block;margin-top:14px;color:var(--muted);font-size:13px}
-#ok{display:none;margin-top:14px;color:var(--sky-deep);font-weight:600}
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+}
 </style>
 </head>
 <body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
 <nav><div class="wrap">
   <a class="logo" href="#">Art of Optimal Living</a>
-  <div class="links">
+  <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-links">Menu</button>
+  <div class="links" id="primary-links">
     <a href="https://austinhiggs.substack.com/">Blog</a><a href="https://calendly.com/artofoptimalliving">Coaching</a><a href="https://www.skool.com/the-art-of-optimal-living-6519/about">Community</a><a href="https://artofoptimalliving.com/about/">About</a>
   </div>
 </div></nav>
 
+<main id="main-content">
 <header class="hero">
   <div class="sun"></div>
   <div class="wrap">
@@ -142,14 +153,14 @@ footer nav{all:unset}
 
 <section id="guide" class="lead"><div class="wrap">
   <div class="panel two">
-    <img class="guide-img" src="images/free-guide.png" alt="Free guide: The Unknown Reason You Can't Lose Weight">
+    <img class="guide-img" src="images/free-guide.webp" width="900" height="1166" loading="lazy" decoding="async" alt="Free guide: The Unknown Reason You Can't Lose Weight">
     <div>
       <span class="eyebrow">Free download</span>
       <h2>The Unknown Reason You Can't Lose Weight</h2>
       <p>Enter your email and I'll send it straight to your inbox, plus quick weekly strategies to optimize your health.</p>
-      <form action="PASTE_MAILCHIMP_FORM_ACTION_URL_HERE" method="post" target="_blank">
+      <form action="https://artofoptimalliving.us8.list-manage.com/subscribe/post?u=21ffd081f85f60302028f91b3&amp;id=51bb54468e&amp;f_id=00867fe1f0" method="post" target="_blank" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form">
         <input type="email" name="EMAIL" required placeholder="Your email address" aria-label="Email">
-        <div style="position:absolute;left:-5000px" aria-hidden="true"><input type="text" name="PASTE_MAILCHIMP_BOT_FIELD_NAME_HERE" tabindex="-1" value=""></div>
+        <div style="position:absolute;left:-5000px" aria-hidden="true"><input type="text" name="b_21ffd081f85f60302028f91b3_51bb54468e" tabindex="-1" value=""></div>
         <button class="btn" type="submit" style="border:0;cursor:pointer">Send me the guide</button>
       </form>
       <small>We don't spam. Unsubscribe anytime.</small>
@@ -168,6 +179,7 @@ footer nav{all:unset}
     <ul><li>💬 Ask questions, get answers</li><li>📚 Guides &amp; protocols</li><li>🤝 Support from like-minded people</li></ul>
   </div>
 </div></section>
+</main>
 
 <footer><div class="wrap">
   <div><div class="logo" style="color:var(--ink)"><i></i>Art of Optimal Living</div><p style="margin:10px 0 0;max-width:320px">Optimizing health to improve the quality and length of life.</p></div>
@@ -177,6 +189,38 @@ footer nav{all:unset}
   <div class="fl">
     <a href="https://www.instagram.com/artofoptimalliving/">Instagram</a><a href="https://x.com/artofoptimal">X</a><a href="https://youtube.com/@theartofoptimalliving">YouTube</a><a href="https://www.facebook.com/artofoptimalliving">Facebook</a>
   </div>
+  <div class="fl">
+    <a href="privacy.html">Privacy</a><a href="terms.html">Terms</a>
+  </div>
 </div></footer>
+<script>
+const menuButton = document.querySelector('.menu-toggle');
+const primaryLinks = document.querySelector('#primary-links');
+
+function closeMenu() {
+  primaryLinks.classList.remove('open');
+  menuButton.setAttribute('aria-expanded', 'false');
+}
+
+menuButton.addEventListener('click', () => {
+  const isOpen = primaryLinks.classList.toggle('open');
+  menuButton.setAttribute('aria-expanded', String(isOpen));
+});
+
+primaryLinks.addEventListener('click', event => {
+  if (event.target.closest('a')) closeMenu();
+});
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape') {
+    closeMenu();
+    menuButton.focus();
+  }
+});
+
+window.addEventListener('resize', () => {
+  if (window.innerWidth > 820) closeMenu();
+});
+</script>
 </body>
 </html>
