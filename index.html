@@ -230,6 +230,12 @@ window.mcCallback = function (data) {
   const tmp = document.createElement('div');
   tmp.innerHTML = (data && data.msg) || '';
   const text = (tmp.textContent || '').replace(/^\d+\s*-\s*/, '').trim();
+  if (data && data.result !== 'success' && /captcha/i.test(text)) {
+    mcStatus.textContent = 'One quick security check, redirecting you…';
+    mcForm.target = '_self';
+    mcForm.submit();
+    return;
+  }
   if (data && data.result === 'success') {
     mcStatus.textContent = text || 'Thanks! Check your inbox for the guide.';
     mcForm.reset();
