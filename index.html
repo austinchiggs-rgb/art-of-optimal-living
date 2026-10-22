@@ -112,6 +112,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
 .guide-img{display:block;width:min(300px,100%);height:auto;margin:0 auto;border-radius:12px;box-shadow:0 18px 40px -16px rgba(11,42,74,.45)}
 .lead form{display:flex;gap:10px;flex-wrap:wrap}
 .lead input{flex:1;min-width:220px;padding:14px 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:15px}
+.lead form input:not([tabindex]){flex:1 1 100%}
 .lead input:focus{outline:2px solid var(--sky);border-color:transparent}
 .lead small{display:block;margin-top:14px;color:var(--muted);font-size:13px}
 @media(prefers-reduced-motion:reduce){
@@ -157,9 +158,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
     <div>
       <span class="eyebrow">Free download</span>
       <h2>The Unknown Reason You Can't Lose Weight</h2>
-      <p>Enter your email and I'll send it straight to your inbox, plus quick weekly strategies to optimize your health.</p>
+      <p>Enter your name and email and I'll send it straight to your inbox, plus quick weekly strategies to optimize your health.</p>
       <form action="https://artofoptimalliving.us8.list-manage.com/subscribe/post?u=21ffd081f85f60302028f91b3&amp;id=51bb54468e&amp;f_id=00867fe1f0" method="post" target="_blank" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form">
-        <input type="email" name="EMAIL" required placeholder="Your email address" aria-label="Email">
+        <input type="text" name="FNAME" id="mce-FNAME" required placeholder="Your first name" aria-label="First name" autocomplete="given-name">
+        <input type="email" name="EMAIL" id="mce-EMAIL" required placeholder="Your email address" aria-label="Email" autocomplete="email">
         <div style="position:absolute;left:-5000px" aria-hidden="true"><input type="text" name="b_21ffd081f85f60302028f91b3_51bb54468e" tabindex="-1" value=""></div>
         <button class="btn" type="submit" style="border:0;cursor:pointer">Send me the guide</button>
       </form>
