@@ -114,6 +114,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
 .lead input{flex:1;min-width:220px;padding:14px 20px;border-radius:999px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);font:inherit;font-size:15px}
 .lead form input:not([tabindex]){flex:1 1 100%}
 .lead input:focus{outline:2px solid var(--sky);border-color:transparent}
+#mc-status:empty{display:none}
 .lead small{display:block;margin-top:14px;color:var(--muted);font-size:13px}
 @media(prefers-reduced-motion:reduce){
   html{scroll-behavior:auto}
@@ -163,8 +164,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
         <input type="text" name="FNAME" id="mce-FNAME" required placeholder="Your first name" aria-label="First name" autocomplete="given-name">
         <input type="email" name="EMAIL" id="mce-EMAIL" required placeholder="Your email address" aria-label="Email" autocomplete="email">
         <div style="position:absolute;left:-5000px" aria-hidden="true"><input type="text" name="b_21ffd081f85f60302028f91b3_51bb54468e" tabindex="-1" value=""></div>
-        <button class="btn" type="submit" style="border:0;cursor:pointer">Send me the guide</button>
+        <button class="btn" type="submit" name="subscribe" id="mc-embedded-subscribe" value="Subscribe" style="border:0;cursor:pointer">Send me the guide</button>
       </form>
+      <p id="mc-status" role="status" aria-live="polite" style="margin:14px 0 0;font-weight:500"></p>
       <small>We don't spam. Unsubscribe anytime.</small>
     </div>
   </div>
@@ -218,6 +220,39 @@ document.addEventListener('keydown', event => {
     closeMenu();
     menuButton.focus();
   }
+});
+
+const mcForm = document.getElementById('mc-embedded-subscribe-form');
+const mcStatus = document.getElementById('mc-status');
+const mcButton = document.getElementById('mc-embedded-subscribe');
+
+window.mcCallback = function (data) {
+  const tmp = document.createElement('div');
+  tmp.innerHTML = (data && data.msg) || '';
+  const text = (tmp.textContent || '').replace(/^\d+\s*-\s*/, '').trim();
+  if (data && data.result === 'success') {
+    mcStatus.textContent = text || 'Thanks! Check your inbox for the guide.';
+    mcForm.reset();
+  } else {
+    mcStatus.textContent = text || 'Something went wrong. Please try again.';
+  }
+  mcButton.disabled = false;
+};
+
+mcForm.addEventListener('submit', event => {
+  event.preventDefault();
+  mcStatus.textContent = 'Sending…';
+  mcButton.disabled = true;
+  const params = new URLSearchParams(new FormData(mcForm));
+  params.set('c', 'mcCallback');
+  const url = mcForm.action.replace('/subscribe/post?', '/subscribe/post-json?') + '&' + params.toString();
+  const script = document.createElement('script');
+  script.src = url;
+  script.onerror = () => {
+    mcStatus.textContent = 'Something went wrong. Please try again.';
+    mcButton.disabled = false;
+  };
+  document.body.appendChild(script);
 });
 
 window.addEventListener('resize', () => {
