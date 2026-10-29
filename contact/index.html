@@ -43,7 +43,7 @@
     <p>I'll reply to the email address you provided as soon as I can.</p>
   </div>
 
-  <form class="contact-form" id="contact-form" action="https://formsubmit.co/austinhiggs@artofoptimalliving.com" method="post">
+  <form class="contact-form" id="contact-form" action="https://api.web3forms.com/submit" method="post">
     <label>Name
       <input type="text" name="name" required autocomplete="name">
     </label>
@@ -53,10 +53,11 @@
     <label>Message
       <textarea name="message" required></textarea>
     </label>
-    <input type="hidden" name="_subject" value="New message from artofoptimalliving.com">
-    <input type="hidden" name="_template" value="table">
-    <input type="hidden" name="_next" value="https://artofoptimalliving.com/contact/?sent=1">
-    <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <input type="hidden" name="access_key" value="09ee4ac6-808e-480b-92b8-92b384a2f46f">
+    <input type="hidden" name="subject" value="New message from artofoptimalliving.com">
+    <input type="hidden" name="from_name" value="Art of Optimal Living website">
+    <input type="hidden" name="redirect" value="https://artofoptimalliving.com/contact/?sent=1">
+    <input class="hp" type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" aria-hidden="true">
     <button class="download-button" type="submit">Send message</button>
   </form>
 </div></main>
