@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Contact | The Art of Optimal Living</title>
+<meta name="description" content="Get in touch with Austin Higgs at The Art of Optimal Living.">
+<meta name="theme-color" content="#F6FBFE" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#08192B" media="(prefers-color-scheme: dark)">
+<link rel="canonical" href="https://artofoptimalliving.com/contact/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/legal.css">
+<style>
+.contact-form{margin-top:32px;padding:36px;border:1px solid var(--line);border-radius:24px;background:var(--surface);display:grid;gap:18px}
+.contact-form label{display:grid;gap:6px;color:var(--ink);font-size:15px;font-weight:500}
+.contact-form input,.contact-form textarea{width:100%;padding:14px 18px;border:1.5px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink);font:inherit;font-size:16px}
+.contact-form textarea{min-height:170px;resize:vertical}
+.contact-form input:focus,.contact-form textarea:focus{outline:2px solid var(--sky);border-color:transparent}
+.contact-form button{justify-self:start;border:0;cursor:pointer;font:inherit}
+.sent{margin-top:32px;padding:28px 32px;border:1px solid var(--line);border-radius:24px;background:var(--surface)}
+.sent h2{margin:0 0 8px}
+.sent p{margin:0}
+.hp{position:absolute;left:-5000px}
+@media(max-width:600px){.contact-form{padding:24px}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main-content">Skip to main content</a>
+<header class="site-header"><div class="wrap">
+  <a class="brand" href="/">Art of Optimal Living</a>
+  <a class="home-link" href="/">Home</a>
+</div></header>
+<main id="main-content"><div class="wrap">
+  <p class="eyebrow">Contact</p>
+  <h1>Get in touch</h1>
+  <p>Have a question about coaching, the free guide, or anything else? Send a message and I'll get back to you.</p>
+
+  <div class="sent" id="sent" hidden>
+    <h2>Thanks, your message was sent.</h2>
+    <p>I'll reply to the email address you provided as soon as I can.</p>
+  </div>
+
+  <form class="contact-form" id="contact-form" action="https://formsubmit.co/austinhiggs@artofoptimalliving.com" method="post">
+    <label>Name
+      <input type="text" name="name" required autocomplete="name">
+    </label>
+    <label>Email
+      <input type="email" name="email" required autocomplete="email">
+    </label>
+    <label>Message
+      <textarea name="message" required></textarea>
+    </label>
+    <input type="hidden" name="_subject" value="New message from artofoptimalliving.com">
+    <input type="hidden" name="_template" value="table">
+    <input type="hidden" name="_next" value="https://artofoptimalliving.com/contact/?sent=1">
+    <input class="hp" type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button class="download-button" type="submit">Send message</button>
+  </form>
+</div></main>
+<footer><div class="wrap">&copy; 2026 The Art of Optimal Living · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></div></footer>
+<script>
+if (new URLSearchParams(location.search).has('sent')) {
+  document.getElementById('sent').hidden = false;
+  document.getElementById('contact-form').hidden = true;
+}
+</script>
+</body>
+</html>
